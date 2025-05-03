@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%+^0sjvd@p-h2#wx6#gv9c+tli@vg2@1&3*$3*a%_%a^ut(5$p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -37,11 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users',
     'rest_framework',
     'oauth2_provider',
     'social_django',
-    'rest_framework_social_oauth2',
+    'drf_social_oauth2',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -115,13 +115,13 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         # 0auth2 authentication classes
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
-        'rest_framework_social_oauth2.authentication.SocialAuthentication',
+        'drf_social_oauth2.authentication.SocialAuthentication',
     ]
 }
 
 AUTHENTICATION_BACKENDS = (
+     'drf_social_oauth2.backends.DjangoOAuth2',
    'django.contrib.auth.backends.ModelBackend',
-   'rest_framework_social_oauth2.backends.DjangoOAuth2',
 )
 
 # Internationalization
